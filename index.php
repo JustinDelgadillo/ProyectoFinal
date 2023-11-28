@@ -22,7 +22,7 @@
     include 'conexion.php';
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $usuario = $_POST["usuario"];
+        $usuario = $_POST["usuario"];  
         $contrasena = $_POST["contrasena"];
 
         $sql_insert_usuario = "INSERT INTO registros (nombre_usuario, password) VALUES ('$usuario', '$contrasena')";
