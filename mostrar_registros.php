@@ -30,5 +30,28 @@
     } else {
         echo '<p class="mensaje">No hay usuarios registrados</p>';
     }
-    ?>
+
+        // Mostrar el formulario de actualización si se recibe una solicitud GET con el parámetro 'actualizar'
+        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["actualizar"])) {
+            $usuario_id = $_GET["actualizar"];
+    
+            // Obtener el usuario actual para mostrarlo en el formulario de actualización
+            $sql_select_usuario = "SELECT * FROM registros WHERE id=$usuario_id";
+            $result_usuario = $conn->query($sql_select_usuario);
+    
+            if ($result_usuario->num_rows > 0) {
+                $row_usuario = $result_usuario->fetch_assoc();
+                $usuario_actual = $row_usuario["nombre_usuario"];
+    
+                // Mostrar formulario de actualización
+                echo '<form action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" method="post">';
+                echo '<input type="hidden" name="usuario_id" value="' . $usuario_id . '">';
+                echo 'Nuevo Usuario: <input type="text" name="nuevo_usuario" value="' . $usuario_actual . '" required>';
+                echo 'Nueva Contraseña: <input type="password" name="nueva_contrasena">';
+                echo '<input type="submit" name="actualizar" value="Actualizar">';
+                echo '</form>';
+            }
+        }
+        ?>
+    
 
