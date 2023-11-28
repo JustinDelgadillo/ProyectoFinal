@@ -53,5 +53,20 @@
             }
         }
         ?>
+        
+        <?php
+    include 'conexion.php';
+    include 'borrar_registro.php';
+
+    if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["eliminar"])) {
+        $usuario_id = $_GET["eliminar"];
+
+        // Llama a la función para eliminar el registro
+        eliminarRegistro($conn, $usuario_id);
+
+        echo '<p class="mensaje">Registro eliminado exitosamente</p>';
+    }
+    ?>
+
     
 
