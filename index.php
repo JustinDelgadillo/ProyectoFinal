@@ -17,24 +17,26 @@
 
         <input type="submit" name="registrar" value="Registrar">
     </form>
+
+    <?php
+    include 'conexion.php';
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $usuario = $_POST["usuario"];
+        $contrasena = $_POST["contrasena"];
+
+        $sql_insert_usuario = "INSERT INTO registros (nombre_usuario, password) VALUES ('$usuario', '$contrasena')";
+        if ($conn->query($sql_insert_usuario) === TRUE) {
+            $usuario_id = $conn->insert_id;
+            echo '<p class="mensaje">El usuario se ha registrado con éxito</p>';
+        } else {
+            echo '<p class="error">Lo sentimos, el usuario no ha logrado ser registrado: ' . $conn->error . '</p>';
+        }
+    }
+
+    $conn->close();
+    ?>
+
+   <button onclick="window.location.href='http://justin319041181.rf.gd/mostrar_registros.php'">Mostrar Usuarios Registrados</button>
 </body>
 </html>
-
-<?php
-include 'conexion.php';
-    
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = $_POST["usuario"];
-    $contrasena = $_POST["contrasena"];
-
-    $sql_insert_usuario = "INSERT INTO registros (nombre_usuario, password) VALUES ('$usuario', '$contrasena')";
-    if ($conn->query($sql_insert_usuario) === TRUE) {
-        $usuario_id = $conn->insert_id;
-        echo '<p class="mensaje">El usuario se ha registrado con éxito</p>';
-    } else {
-        echo '<p class="error">Lo sentimos, el usuario no ha logrado ser registrado: ' . $conn->error . '</p>';
-    }
-}
-
-$conn->close();
-?>
