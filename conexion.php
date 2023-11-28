@@ -6,6 +6,7 @@ $dbname = "if0_35205189_registros";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }

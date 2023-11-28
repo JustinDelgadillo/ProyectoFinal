@@ -5,6 +5,7 @@
     <title>ProyectoFinal - Ver Registros</title>
     <link rel="stylesheet" type="text/css" href="estilos.css">
 </head>
+
 <body>
     <h1>Usuarios Registrados</h1>
 
