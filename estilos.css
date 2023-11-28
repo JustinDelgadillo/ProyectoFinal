@@ -56,5 +56,47 @@ input {
 input:focus {
     border-color: #ff8c00;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.5); /* Agregada una sombra al enfocar */
+}
+
+button {
+    display: inline-block;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+input[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+button.secondary {
+    background-color: #3498db;
+    color: #fff;
+}
+
+button.secondary:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.mensaje {
+    margin-top: 20px;
+    color: #fff;
+}
+
+.error {
+    color: #ff4d4d;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
